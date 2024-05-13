@@ -5,5 +5,9 @@ while (i < 10) {
 
     i = i + 1;
 
-    console.log (i)
+    if (i % 2 === 0) {
+        console.log ( i, 'Es par')
+    } else {
+        console.log (i, 'Es impar')
+    }
 }

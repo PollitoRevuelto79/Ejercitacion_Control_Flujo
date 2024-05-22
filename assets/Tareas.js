@@ -1,22 +1,11 @@
 let lista = [];
 const regex = /^\S+$/;
 
-function editar(TareaUno, TareaDos) {
-    if (lista.includes(TareaUno)) {
-        let posicion = lista.indexOf(TareaUno);
-    if (posicion !== -1) {
-        lista.splice(posicion, 1, TareaDos);
+function showLista() {
+    if (lista.length === 0) {
+        alert('Todavía no existen tareas.')
     } else {
-        alert(`Elemento "${TareaDos}" no encontrado en la lista.`);
-    }
-    }
-}
-
-function eliminar(materia) {
-    for (let i = 0; i < lista.length; i++) {
-        if (lista[i] === materia) {
-            lista.splice(i , 1)
-        }
+        alert(lista)
     }
 }
 
@@ -28,6 +17,34 @@ function agregar() {
             } else {
                 lista.push(tarea)
         }
+    } else {
+        alert('La tarea no debe contener espacios (Pruebe usando -).')
+    }
+}
+
+function editar (TareaUno, TareaDos){
+    if (lista.length === 0 ) {
+        alert('No existen tareas para editar.')
+    } else {
+        if (lista.includes(TareaUno)) {
+            let posicion = lista.indexOf(TareaUno)
+            if (posicion !== -1) {
+                } if (regex.test(TareaDos)) {
+                    lista.splice(posicion, 1 , TareaDos)
+                } else {
+                    alert('No debe contener espacios.')
+                }
+        } else {
+            alert('La tarea que desea editar no existe.')
+        }
+    }
+}
+
+function eliminar(materia) {
+    for (let i = 0; i < lista.length; i++) {
+        if (lista[i] === materia) {
+            lista.splice(i , 1)
+        }
     }
 }
 
@@ -36,7 +53,7 @@ while (options != 0) {
     options = parseInt(prompt('Ingrese una opción.\n1.Ver lista de tareas.\n2.Crear nueva tarea.\n3.Editar tarea.\n4.Eliminar tarea.\n0.Salir'));
 switch (options) {
     case 1:
-        alert(lista)
+        showLista(lista)
         break;
     case 2:
         agregar(lista)
@@ -49,5 +66,11 @@ switch (options) {
     case 4:
         eliminar(prompt(`Ingrese nombre de la tarea que desea eliminar.\n${lista}`))
         break;
-}
+    case 0:
+        alert('SAYONARA.')
+        break;
+    default:
+        alert('No existe la opción que esta ingresando.')
+        break;
+    }
 }

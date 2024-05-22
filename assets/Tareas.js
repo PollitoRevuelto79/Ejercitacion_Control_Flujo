@@ -1,6 +1,7 @@
 let lista = [];
 const regex = /^\S+$/;
 
+// Esta función muestra la lista de tareas, solo si existen tareas, en el caso contrario dira que todavia no hay tareas agendadas.
 function showLista() {
     if (lista.length === 0) {
         alert('Todavía no existen tareas.')
@@ -9,6 +10,7 @@ function showLista() {
     }
 }
 
+// Esta función agrega una tarea solo cuando no posea espacio o cuando no exista una tarea con el mismo nombre.
 function agregar() {
     let tarea = (prompt('Escriba el nombre de la tarea a agregar:'))
     if (regex.test(tarea)) {
@@ -22,6 +24,11 @@ function agregar() {
     }
 }
 
+
+// Esta función permite el cambiar el nombre de una tarea por otro.
+// Permitira editar tareas solo si existe al menos una tarea.
+// Al editar la tarea lanzara un mensaje de error si la nueva tarea tienen espacios.
+// Si al editar se elige una tarea que no existe en la lista aparecera un mensaje que dice que no exista dicha tarea.
 function editar (TareaUno, TareaDos){
     if (lista.length === 0 ) {
         alert('No existen tareas para editar.')
@@ -40,6 +47,8 @@ function editar (TareaUno, TareaDos){
     }
 }
 
+
+// Esta función permite eliminar una tarea.
 function eliminar(materia) {
     for (let i = 0; i < lista.length; i++) {
         if (lista[i] === materia) {
